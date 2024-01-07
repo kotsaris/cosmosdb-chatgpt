@@ -120,7 +120,7 @@ public class ChatService
         string conversation = GetChatSessionConversation(sessionId);
 
         //Generate a completion and tokens used from the user prompt and conversation
-        (string completionText, int completionTokens) = await _openAiService.GetChatCompletionAsync(sessionId, conversation);
+        (string completionText, int completionTokens, int responseTokens) = await _openAiService.GetChatCompletionAsync(sessionId, conversation);
 
         //Create a message object for the completion
         Message completion = CreateCompletionMessage(sessionId, completionTokens, completionText);
